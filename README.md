@@ -39,6 +39,6 @@ To run this project, you will need to add the following environment variables to
 
 ## Authors
 
-- [@OffenisvelyKind](https://www.github.com/OffensivelyKind)
+- [@OffensivelyKind](https://www.github.com/OffensivelyKind)
 - [@Bludenz](https://www.github.com/Bludenz)
 
