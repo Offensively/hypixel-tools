@@ -2,6 +2,7 @@
 process.env.isOnline = true
 const client = require("./discord/bot");
 const mysql = require("mysql");
+const server = require('./server')
 // load commands
 const fs = require("fs");
 const Discord = require("discord.js");

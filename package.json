@@ -24,6 +24,7 @@
     "discord-api-types": "^0.31.0",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
+    "express": "^4.17.3",
     "find-remove": "^4.0.4",
     "fs": "^0.0.1-security",
     "mineflayer": "^4.2.0",
