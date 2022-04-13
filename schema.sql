@@ -16,6 +16,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 CREATE TABLE HypixelTools;
+USE HypixelTools;
 
 --
 -- Table structure for table `alts`
