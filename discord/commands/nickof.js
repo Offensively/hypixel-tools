@@ -33,10 +33,30 @@ function getNick(ign) {
             mojangRunning = false
         })
 
-        
-        const res = await axios.get(`http://api.antisniper.net/findnick?key=${process.env.ANTISNIPER_APIKEY}&name=${ign}`).catch( (err) => console.log)
-        if (res.data != null) {
-            nick = res.data.player.nick
+
+        const dbRecords = await utils.query(index.con, 'SELECT * FROM `nicks` WHERE uuid = ?', [await utils.nameToUUID(ign)])
+        if (dbRecords.length > 0) {
+            const times = []
+            let selectedRow;
+            // Creat times array
+            for (var i = 0; i < dbRecords.length; i++) {
+                const row = dbRecords[i]
+                times.push(row.dateCreated)
+            }
+            // Get most recent one
+            for (var i = 0; i < dbRecords.length; i++) {
+                const row = dbRecords[i]
+                if (row.dateCreated == Math.max(times)) {
+                    selectedRow = row
+                }
+            }
+            // selectedRow is most recent nick
+            nick = selectedRow.nickname
+        } else {
+            const res = await axios.get(`http://api.antisniper.net/findnick?key=${process.env.ANTISNIPER_APIKEY}&name=${ign}`).catch( (err) => console.log)
+            if (res.data != null) {
+                nick = res.data.player.nick
+            }
         }
     
         while (mojangRunning) {
