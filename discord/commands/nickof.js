@@ -38,15 +38,15 @@ function getNick(ign) {
         if (dbRecords.length > 0) {
             const times = []
             let selectedRow;
-            // Creat times array
+            // Create times array
             for (var i = 0; i < dbRecords.length; i++) {
                 const row = dbRecords[i]
-                times.push(row.dateCreated)
+                times.push(row.dateChanged)
             }
             // Get most recent one
             for (var i = 0; i < dbRecords.length; i++) {
                 const row = dbRecords[i]
-                if (row.dateCreated == Math.max(times)) {
+                if (row.dateChanged == Math.max(times)) {
                     selectedRow = row
                 }
             }
