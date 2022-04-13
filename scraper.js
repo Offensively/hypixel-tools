@@ -14,7 +14,7 @@ async function preventAFK(bot) {
     bot.controlState.backward = true
     await utils.wait(2000)
     bot.controlState.backward = false
-    setTimeout(preventAFK(bot), 250000)
+    setTimeout(() => preventAFK(bot), 250000)
 }
 
 module.exports.start = function () {
