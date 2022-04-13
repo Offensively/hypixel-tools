@@ -12,6 +12,7 @@ Install hypixel-tools with git:
   git clone https://github.com/OffensivelyKind/hypixel-tools
   cd hypixel-tools
   npm install
+  mysql -u root -p -h localhost HypixelTools < schema.sql
   npm start
 ```
     
