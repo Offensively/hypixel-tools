@@ -1,0 +1,32 @@
+{
+  "name": "hypixel-denicker",
+  "version": "1.0.0",
+  "description": "Denick Hypixel Nicks",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OffensivelyKind/hypixel-denicker.git"
+  },
+  "author": "OffensivelyKind",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OffensivelyKind/hypixel-denicker/issues"
+  },
+  "homepage": "https://github.com/OffensivelyKind/hypixel-denicker#readme",
+  "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "axios": "^0.26.1",
+    "discord-api-types": "^0.31.0",
+    "dotenv": "^16.0.0",
+    "find-remove": "^4.0.4",
+    "fs": "^0.0.1-security",
+    "mineflayer": "^4.2.0",
+    "mojang-api": "^0.0.2",
+    "mysql": "^2.18.1"
+  }
+}
