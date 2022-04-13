@@ -57,6 +57,8 @@ module.exports.start = function () {
                                 data.nick = {}
                                 data.nick.date = currentNick.player.date
                                 data.nick.nick = currentNick.player.nick
+                                await utils.query(con, 'INSERT INTO `nicks` (uuid, nickname, dateChanged) VALUES (?, ?, ?)', [uuid, data.nick.nick, data.nick.date])
+                                console.log('Added ' + username + ' to database!')
                             }
                         }
                     }
