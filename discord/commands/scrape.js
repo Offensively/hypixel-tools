@@ -25,6 +25,7 @@ module.exports = {
         if (!interaction.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) return;
 
         if (interaction.options.getSubcommand() === 'start') {
+            scraper.start()
             await interaction.reply({ content: 'Started successfully!', ephemeral: true })
         } else if (interaction.options.getSubcommand() === 'stop') {
             scraper.stop()
