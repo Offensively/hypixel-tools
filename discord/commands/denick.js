@@ -34,10 +34,37 @@ function getRealIGN(nick) {
                 mojangRunning = false
             })
         }
-
-        const res = await axios.get(`http://api.antisniper.net/denick?key=${process.env.ANTISNIPER_APIKEY}&nick=${nick}`).catch( (err) => console.log)
-        if (res.data != null) {
-            ign = res.data.player.ign
+        const dbRecords = await utils.query(index.con, 'SELECT * FROM `nicks` WHERE nickname = ?', [nick])
+        if (dbRecords.length > 0) {
+            const times = []
+            let selectedRow;
+            // Creat times array
+            for (var i = 0; i < dbRecords.length; i++) {
+                const row = dbRecords[i]
+                times.push(row.dateCreated)
+            }
+            // Get most recent one
+            for (var i = 0; i < dbRecords.length; i++) {
+                const row = dbRecords[i]
+                if (row.dateCreated == Math.max(times)) {
+                    selectedRow = row
+                }
+            }
+            // selectedRow is most recent nick
+            ign = await new Promise( (resolve, reject) => {
+                mojang.profile(selectedRow.uuid, (err, res) => {
+                    if (err) {
+                        console.log(err)
+                        resolve(ign);
+                    }
+                    resolve(res.name)
+                })
+            })
+        } else {
+            const res = await axios.get(`http://api.antisniper.net/denick?key=${process.env.ANTISNIPER_APIKEY}&nick=${nick}`).catch( (err) => console.log)
+            if (res.data != null) {
+                ign = res.data.player.ign
+            }
         }
     
         while (mojangRunning) {
